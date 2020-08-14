@@ -1,65 +1,72 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { Col, Row } from "antd";
+import {
+  HomeOutlined,
+  SearchOutlined,
+  MailOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+
+function Menu() {
+  return (
+    <Row>
+      <Col span={24}>
+        <HomeOutlined />
+      </Col>
+      <Col span={24}>
+        <SearchOutlined />
+      </Col>
+      <Col span={24}>
+        <MailOutlined />
+      </Col>
+      <Col span={24}>
+        <UserOutlined />
+      </Col>
+    </Row>
+  );
+}
+
+function Tweet({ avatar, user, nickname, text }) {
+  return (
+    <Row
+      style={{
+        border: "1px solid #000",
+        borderRadius: "10px",
+        padding: 10,
+      }}
+      gutter={[16, 16]}
+    >
+      <Col span={4}>
+        <img src={avatar} width="100%" style={{ borderRadius: "100%" }} />
+      </Col>
+      <Col span={20}>
+        <h2>
+          {user} {nickname}
+        </h2>
+        <p>{text}</p>
+      </Col>
+    </Row>
+  );
+}
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <h1>Hi there Garuda!</h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+      <Row>
+        <Col span={4}>
+          <Menu />
+        </Col>
+        <Col span={14}>
+          <Tweet
+            avatar="https://pbs.twimg.com/profile_images/1278619568508985344/MCS_SOvw_400x400.jpg"
+            user="Jorge"
+            nickname="@jgferreiro"
+            text="I love you all. Thanks for bringing over Garuda hacks <3"
+          />
+        </Col>
+        <Col span={6}>Sidebar</Col>
+      </Row>
+    </>
+  );
 }
